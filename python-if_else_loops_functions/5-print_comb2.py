@@ -1,5 +1,7 @@
 #!/usr/bin/python3
+result = ""
 for number in range(0, 100):
-    print(f"{number:02d}", end="")
+    result += "{:02d}".format(number)
     if number != 99:
-        print(",", end=" ")
+        result += ", "
+print(result)
