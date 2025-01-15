@@ -2,16 +2,18 @@
 import sys
 index = 1
 
-if len(sys.argv) == 1:
-    print("0 arguments.")
-    exit()
+if __name__ == "__main__":
 
-elif len(sys.argv) == 2:
-    print("1 argument:")
+    if len(sys.argv) == 1:
+        print("0 arguments.")
+        exit()
 
-else:
-    print(f"{len(sys.argv)-1} arguments:")
+    elif len(sys.argv) == 2:
+        print("1 argument:")
 
-for item in sys.argv[1:]:
-    print(f"{index}: {item}")
-    index = index + 1
+    else:
+        print(f"{len(sys.argv)-1} arguments:")
+
+    for item in sys.argv[1:]:
+        print(f"{index}: {item}")
+        index = index + 1
