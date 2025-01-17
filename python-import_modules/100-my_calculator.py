@@ -24,4 +24,4 @@ if __name__ == "__main__":
         b = int(sys.argv[3])
         op_index = operator.index(sys.argv[2])
         result = funcall[op_index](a, b)
-        print(f"{a} {sys.argv[2]} {b} = {result}")
+        print("{} {} {} = {}".format(a, sys.argv[2], b, result))
