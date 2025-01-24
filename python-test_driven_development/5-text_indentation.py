@@ -25,7 +25,8 @@ def text_indentation(text):
         print(text[index], end="")
         if text[index] in charac_list:
             print("\n")
-            if text[index + 1] == " ":
+
+            while text[index + 1] == " ":
                 index += 1
 
         index += 1
