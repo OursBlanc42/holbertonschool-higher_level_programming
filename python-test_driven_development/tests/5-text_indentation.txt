@@ -27,3 +27,21 @@ Traceback (most recent call last):
     ...
 TypeError: text must be a string
 
+>>> text_indentation("Holberton.School")
+Holberton.
+<BLANKLINE>
+School
+
+>>> text_indentation("Holberton.School? How.are.you: John")
+Holberton.
+<BLANKLINE>
+School?
+<BLANKLINE>
+How.
+<BLANKLINE>
+are.
+<BLANKLINE>
+you:
+<BLANKLINE>
+John
+

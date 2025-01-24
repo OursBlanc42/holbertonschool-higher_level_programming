@@ -15,15 +15,17 @@ def text_indentation(text):
     """
 
     if type(text) is not str:
-        raise TypeError ("text must be a string")
+        raise TypeError("text must be a string")
 
     charac_list = (".", "?", ":")
-    
+
     index = 0
-    
+
     while index < len(text):
         print(text[index], end="")
         if text[index] in charac_list:
             print("\n")
-            index+=1
+            if text[index + 1] == " ":
+                index += 1
+
         index += 1
