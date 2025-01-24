@@ -37,7 +37,7 @@ TypeError: b must be an integer
 >>> add_integer(100.999999999,100.999999999)
 200
 
->>> add_integer(sys.float_info.max + 1, 2)
+>>> add_integer(float('inf'), 2)
 Traceback (most recent call last):
     ...
-Overflow
+OverflowError
