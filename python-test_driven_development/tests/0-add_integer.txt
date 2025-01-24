@@ -35,8 +35,3 @@ TypeError: b must be an integer
 
 >>> add_integer(100.999999999,100.999999999)
 200
-
-
-
-
-
