@@ -50,5 +50,3 @@ def matrix_divided(matrix, div):
             item[i] = round(item[i] / div, 2)
 
     return (result_matrix)
-
-
