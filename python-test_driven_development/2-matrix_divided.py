@@ -49,4 +49,4 @@ def matrix_divided(matrix, div):
         for i in range(len(item)):
             item[i] = round(item[i] / div, 2)
 
-    print(result_matrix)
+    return (result_matrix)
