@@ -32,3 +32,8 @@ TypeError: b must be an integer
 
 >>> add_integer(100.3,-2.4080)
 98
+
+>>> add_integer(100.999999999,100.999999999)
+200
+
+
