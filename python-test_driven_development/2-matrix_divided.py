@@ -7,7 +7,17 @@ Module for matrix_divided function
 
 def matrix_divided(matrix, div):
     """
-    matrix_divided : divide all elements of a matrix
+    matrix_divided : Divide a matrix by a number
+
+    Args:
+        matrix (list of list): matrix of input number
+        div (int): divisor
+
+    Raises:
+        Check if the matrix is a matrix
+        Check if each row of the matrix have the same size
+        Check if div is a int
+        Check if div = 0
     """
 
     list_len = []
