@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 
 """
-Module for basic calculation (add)
-
+Module for basic calculation (add). 
+    
 """
-
 
 def add_integer(a, b=98):
     """
@@ -13,6 +12,8 @@ def add_integer(a, b=98):
     Args:
         a (int): first integer
         b (int, optional): second integer. Defaults to 98.
+        
+
     """
     try:
         inta = int(a)
@@ -25,3 +26,5 @@ def add_integer(a, b=98):
         raise TypeError("b must be an integer")
 
     return (inta + intb)
+
+
