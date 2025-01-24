@@ -15,6 +15,14 @@ def add_integer(a, b=98):
         
 
     """
+    
+    if type(a) is str:
+        raise TypeError("a must be an integer")
+    
+    if type(b) is str:
+        raise TypeError("b must be an integer")
+        
+    
     try:
         inta = int(a)
     except (ValueError, TypeError):
@@ -26,5 +34,4 @@ def add_integer(a, b=98):
         raise TypeError("b must be an integer")
 
     return (inta + intb)
-
 
