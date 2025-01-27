@@ -3,6 +3,7 @@
 # Initialize counters
 total_files=0
 total_problems=0
+pycodestyle_problems=0
 
 # Iterate over all Python files in the current directory
 for file in *.py; do
@@ -65,6 +66,17 @@ except Exception as e:
     print(f'Error: {e}')
 " || file_problems=$((file_problems + 1))
 
+    # Check pycodestyle
+    echo "[PYCODESTYLE] Checking PEP 8 compliance..."
+    pycodestyle_output=$(python3 -m pycodestyle "$file" 2>/dev/null)
+    if [[ -n "$pycodestyle_output" ]]; then
+        file_problems=$((file_problems + 1))
+        pycodestyle_problems=$((pycodestyle_problems + 1))
+        echo "  Issues found with pycodestyle."
+    else
+        echo "  No issues found with pycodestyle."
+    fi
+
     # Add file problems to total problems
     total_problems=$((total_problems + file_problems))
 
@@ -81,6 +93,8 @@ done
 echo "=============================="
 echo "Scan complete!"
 echo "Files scanned: $total_files"
-echo "Problems detected: $total_problems"
+echo "Documentation/Function problems detected: $((total_problems - pycodestyle_problems))"
+echo "Pycodestyle issues detected: $pycodestyle_problems"
+echo "Total problems detected: $total_problems"
 echo "=============================="
 
