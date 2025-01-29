@@ -49,29 +49,29 @@ class Rectangle:
         self.__width = value
 
     @property
-    def heigh(self):
+    def height(self):
         """
-        heigh Get the heigh of the rectangle
+        height Get the height of the rectangle
 
         Returns:
-            int: size of the rectangle (heigh length)
+            int: size of the rectangle (height length)
         """
-        return (self.__heigh)
+        return (self.__height)
 
-    @heigh.setter
+    @height.setter
     def heigh(self, value):
         """
-        heigh Define the heigh of the rectangle
+        height Define the height of the rectangle
 
         Args:
             value (int): size of the rectangle (height length)
 
         Raises:
-            TypeError: heigh must be an integer
-            ValueError: heigh must be >= 0
+            TypeError: height must be an integer
+            ValueError: height must be >= 0
         """
         if not isinstance(value, int):
-            raise TypeError("heigh must be an integer")
+            raise TypeError("height must be an integer")
         if value < 0:
-            raise ValueError("heigh must be >= 0")
-        self.__heigh = value
+            raise ValueError("height must be >= 0")
+        self.__height = value
