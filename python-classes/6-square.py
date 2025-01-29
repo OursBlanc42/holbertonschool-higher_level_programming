@@ -27,7 +27,7 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
-        self.__position = position
+        self.position = position
 
     def area(self):
         """
@@ -75,10 +75,10 @@ class Square:
         else:
             for emptyline in range(0, self.__position[1]):
                 print("")
-            for index in range(0, self.__size):
+            for index1 in range(0, self.__size):
                 for space in range(0, self.__position[0]):
                     print(" ", end="")
-                for index in range(0, self.__size):
+                for index2 in range(0, self.__size):
                     print("#", end="")
                 print("")
 
