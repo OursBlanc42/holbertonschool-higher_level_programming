@@ -103,16 +103,16 @@ class Square:
         Raises:
             TypeError: position must be a tuple of 2 positive integers
         """
-        raise_error = False
 
         if not isinstance(value, tuple) or len(value) != 2:
-            raise_error = True
+            raise TypeError("position must be a tuple of 2 positive integers")
 
         for number in value:
             if not isinstance(number, int):
-                raise_error = True
+                raise TypeError(
+                    "position must be a tuple of 2 positive integers"
+                    )
             if number < 0:
-                raise_error = True
-
-        if raise_error is True:
-            raise TypeError("position must be a tuple of 2 positive integers")
+                raise TypeError(
+                    "position must be a tuple of 2 positive integers"
+                    )
