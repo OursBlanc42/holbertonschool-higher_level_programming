@@ -111,9 +111,12 @@ class Rectangle:
             result: 'Sentence' composed by # and \n
         """
         result = ""
-        for item_y in range(0, self.__height):
-            for item_x in range(0, self.__width):
-                result = result + "#"
-            if item_y != (self.__height - 1):
-                result = result + "\n"
-        return result
+        if self.__height == 0 or self.__width == 0:
+            return result
+        else:
+            for item_y in range(0, self.__height):
+                for item_x in range(0, self.__width):
+                    result = result + "#"
+                if item_y != (self.__height - 1):
+                    result = result + "\n"
+            return result
