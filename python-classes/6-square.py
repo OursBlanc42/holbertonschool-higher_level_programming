@@ -105,10 +105,7 @@ class Square:
         """
         raise_error = False
 
-        if not isinstance(value, tuple):
-            raise_error = True
-
-        if len(value) != 2:
+        if not isinstance(value, tuple) or len(value) != 2:
             raise_error = True
 
         for number in value:
