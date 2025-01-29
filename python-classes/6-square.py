@@ -113,4 +113,4 @@ class Square:
             if number < 0:
                 raise TypeError(error_msg)
 
-            self.__position = value
+        self.__position = value
