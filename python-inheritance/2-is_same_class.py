@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-    _summary_
+    Module for is_same_class
 """
 
 
