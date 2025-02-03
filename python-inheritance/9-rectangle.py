@@ -9,7 +9,7 @@ class BaseGeometry():
     """
     BaseGeometry Improve base geometry with a public instance method
     """
-    def area(self):
+    def area(self, width, height):
         """
         area pass
 
@@ -46,10 +46,36 @@ class Rectangle(BaseGeometry):
     Rectangle Class Rectangle that inherits from BaseGeometry
 
     Args:
-        BaseGeometry (_type_): _description_
+        BaseGeometry (object): parent object
     """
     def __init__(self, width, height):
+        """
+        __init__ constructor
+
+        Args:
+            width (int): width
+            height (int): heigh
+        """
         self.__width = width
         self.__height = height
         self.integer_validator("height", self.__height)
         self.integer_validator("height", self.__width)
+
+    def area(self):
+        """
+        area calculate the area
+
+        Returns:
+            int: area of the rectangle (width * height)
+        """
+        return self.__width * self.__height
+
+    def __str__(self):
+        """
+        __str__ method
+
+        Returns:
+            string: Description of the rectangle
+        """
+        result = "[Rectangle] " + str(self.__width) + "/" + str(self.__height)
+        return (result)
