@@ -1,0 +1,31 @@
+"""
+Docstring test file
+"""
+
+>>> MyList = __import__('1-my_list').MyList
+
+# Simple test with random value and duplicate
+>>> test_list = MyList([3, 1, 4, 1, 5, 9])
+>>> test_list.print_sorted()
+[1, 1, 3, 4, 5, 9]
+
+# Test with negative value
+>>> test_list = MyList([3, 611, 4, 1, -409, 9])
+>>> test_list.print_sorted()
+[-409, 1, 3, 4, 9, 611]
+
+# Test with duplicate
+>>> test_list = MyList([42, 42, 42, 42, 42, 42])
+>>> test_list.print_sorted()
+[42, 42, 42, 42, 42, 42]
+
+# Test with no value
+>>> test_list = MyList([])
+>>> test_list.print_sorted()
+[]
+
+# Test with already sorted list
+>>> test_list = MyList([1, 2, 3])
+>>> test_list.print_sorted()
+[1, 2, 3]
+
