@@ -1,0 +1,23 @@
+"""
+Docstring test file
+"""
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# Simple test with normal behavior
+>>> BaseGeometry().integer_validator("my_int", 12)
+
+# With a non int value
+>>> BaseGeometry().integer_validator("my_int", "Ada")
+TypeError: my_int must be an integer
+
+# With a negative int value
+>>> BaseGeometry().integer_validator("my_int", -12)
+ValueError: my_int must be greater than 0
+
+# With a negative float
+>>> BaseGeometry().integer_validator("my_int", -612.4)
+ValueError: my_int must be an integer
+
+
+
