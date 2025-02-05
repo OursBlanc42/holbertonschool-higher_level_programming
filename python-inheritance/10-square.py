@@ -9,7 +9,7 @@ class BaseGeometry():
     """
     BaseGeometry Improve base geometry with a public instance method
     """
-    def area(self, width, height):
+    def area(self):
         """
         area pass
 
@@ -30,15 +30,13 @@ class BaseGeometry():
             TypeError: Must be an integer
             ValueError: Must be >= 0
         """
-        self.name = name
 
         if type(value) is not int:
-            raise TypeError(f"{self.name} must be an integer")
+            raise TypeError(f"{name} must be an integer")
 
-        self.value = value
 
         if value <= 0:
-            raise ValueError(f"{self.name} must be greater than 0")
+            raise ValueError(f"{name} must be greater than 0")
 
 
 class Rectangle(BaseGeometry):
@@ -56,10 +54,11 @@ class Rectangle(BaseGeometry):
             width (int): width
             height (int): height
         """
+
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
         self.__width = width
         self.__height = height
-        self.integer_validator("height", self.__height)
-        self.integer_validator("height", self.__width)
 
     def area(self):
         """
@@ -95,9 +94,9 @@ class Square(Rectangle):
         Args:
             size (int): size of the edge
         """
+        self.integer_validator("size", size)
         self.__size = size
-        self.integer_validator("size", self.__size)
-        super().__init__(self.__size, self.__size)
+        super().__init__(size, size)
 
     def area(self):
         """
@@ -106,4 +105,4 @@ class Square(Rectangle):
         Returns:
             int: area of the square
         """
-        return self.__size * self.__size
+        return super().area()
