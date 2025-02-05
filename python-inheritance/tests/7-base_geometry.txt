@@ -5,8 +5,23 @@ Docstring test file
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
+
+# Test with area call 1
+>>> bg.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+# Test with area call 2
+>>> print(bg.area())
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+
 # Simple test with normal behavior
 >>> bg.integer_validator("my_int", 12)
+
 
 # Test with non int value
 >>> bg.integer_validator("my_int", [12, 13, 15])
@@ -14,17 +29,69 @@ Traceback (most recent call last):
     ...
 TypeError: my_int must be an integer
 
+
 # Test with negative value
 >>> bg.integer_validator("my_int", -12)
 Traceback (most recent call last):
     ...
 ValueError: my_int must be greater than 0
 
+
 # Test with zero value
 >>> bg.integer_validator("my_int", 0)
 Traceback (most recent call last):
     ...
 ValueError: my_int must be greater than 0
+
+
+# Test with none Value
+>>> bg.integer_validator("None_value", None)
+Traceback (most recent call last):
+    ...
+TypeError: None_value must be an integer
+
+
+# Test with float value
+>>> bg.integer_validator("Float_value", 3.14)
+Traceback (most recent call last):
+    ...
+TypeError: Float_value must be an integer
+
+
+# Test with bool value
+>>> bg.integer_validator("Bool_value", True)
+Traceback (most recent call last):
+    ...
+TypeError: Bool_value must be an integer
+
+
+# Test with empty value
+>>> bg.integer_validator("empty_string", "")
+Traceback (most recent call last):
+    ...
+TypeError: empty_string must be an integer
+
+
+# test with dictionnary value
+>>> bg.integer_validator("dict_value", {"key": "value"})
+Traceback (most recent call last):
+    ...
+TypeError: dict_value must be an integer
+
+
+# Test with int in a string :
+>>> bg.integer_validator("int_in_a_string", "123")
+Traceback (most recent call last):
+    ...
+TypeError: int_in_a_string must be an integer
+
+
+# Test with int in a string :
+>>> bg.integer_validator("int_in_a_string", "123")
+Traceback (most recent call last):
+    ...
+TypeError: int_in_a_string must be an integer
+
 
 # Test with same exact test than in the task :
 >>> bg.integer_validator("my_int", 12)
