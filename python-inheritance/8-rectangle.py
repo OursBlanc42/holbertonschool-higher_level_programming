@@ -47,6 +47,13 @@ class Rectangle(BaseGeometry):
         BaseGeometry (class): inherit class
     """
     def __init__(self, width, height):
+        """
+        __init__ initialize the instance
+
+        Args:
+            width (int): width of the rectangle
+            height (int): height of th rectangle
+        """
         if self.integer_validator("width", width) is True:
             self.__width = width
         if self.integer_validator("height", height) is True:
