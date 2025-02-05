@@ -12,6 +12,7 @@ Traceback (most recent call last):
     ...
 Exception: area() is not implemented
 
+
 # Test with area call 2
 >>> print(bg.area())
 Traceback (most recent call last):
@@ -91,6 +92,18 @@ TypeError: int_in_a_string must be an integer
 Traceback (most recent call last):
     ...
 TypeError: int_in_a_string must be an integer
+
+
+# Test with special char :
+>>> bg.integer_validator("special_char東京", 123)
+
+
+# Test with a value missing :
+>>> bg.integer_validator("missing")
+Traceback (most recent call last):
+    ...
+TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
 
 
 # Test with same exact test than in the task :
