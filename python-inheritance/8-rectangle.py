@@ -44,7 +44,7 @@ class Rectangle(BaseGeometry):
     Rectangle Class Rectangle that inherits from BaseGeometry
 
     Args:
-        BaseGeometry (_type_): _description_
+        BaseGeometry (class): inherit class
     """
     def __init__(self, width, height):
         if self.integer_validator("width", width) is True:
