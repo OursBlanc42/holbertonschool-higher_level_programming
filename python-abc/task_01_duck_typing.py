@@ -90,3 +90,7 @@ def shape_info(item):
 
     print(f"Area: {result_area}")
     print(f"Perimeter: {result_perimeter}")
+
+
+circle = Circle(radius=5)
+rectangle = Rectangle(width=4, height=7)
