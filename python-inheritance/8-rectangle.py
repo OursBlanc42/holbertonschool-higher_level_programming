@@ -41,7 +41,7 @@ class BaseGeometry():
 
 class Rectangle(BaseGeometry):
     """
-    Rectangle Class Rectangle that inherits from BaseGeometry
+    Rectangle Class Rectangle that inherits BaseGeometry
 
     Args:
         BaseGeometry (class): inherit class
