@@ -8,11 +8,11 @@ Docstring test file
 
 # Test with normal behavior
 >>> bg.integer_validator("my_int", 12)
-
+True
 
 # Test with normal behavior
 >>> bg.integer_validator("width", 89)
-
+True
 
 # Test with a non int
 >>> bg.integer_validator("name", "John")

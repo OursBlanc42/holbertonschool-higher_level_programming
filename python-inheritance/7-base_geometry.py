@@ -31,9 +31,9 @@ class BaseGeometry():
             ValueError: Must be >= 0
         """
 
-        if not isinstance(value, int) or isinstance(value, bool):
+        if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
         elif value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
         else:
-            pass
+            return True
