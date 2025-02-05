@@ -4,6 +4,7 @@
     Module for base_geometry
 """
 
+
 class BaseGeometry():
     """
     BaseGeometry Improve base geometry with a public instance method
