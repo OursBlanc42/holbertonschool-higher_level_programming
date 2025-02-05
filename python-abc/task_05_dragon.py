@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Mastering Mixins 
+Mastering Mixins
 """
 
 
@@ -22,5 +22,8 @@ class FlyMixin:
 
 
 class Dragon(SwimMixin, FlyMixin):
+    """
+    Dragon that inherits brom both SwimMixin and FlyMixin
+    """
     def roar(self):
         print("The dragon roars!")
