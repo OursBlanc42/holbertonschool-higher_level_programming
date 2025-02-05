@@ -44,18 +44,18 @@ class VerboseList(list):
         except Exception:
             pass
 
-    def pop(self, item=None):
+    def pop(self, index=None):
         """
         pop Improvement with verbose
             Show the index of the element popped
             If no index specified, delete the last one
         """
-        if item is None:
-            item = len(self)
+        if index is None:
+            index = -1
 
         try:
-            item_incremented = item + 1
-            print(f"Popped [{item_incremented}] from the list.")
-            super().pop(item)
+            popped_item = self[index]
+            print(f"Popped [{popped_item}] from the list.")
+            super().pop(index)
         except Exception:
             pass
