@@ -7,31 +7,48 @@ Extending the Python Iter method
 
 class CountedIterator:
     """
-    VerboseList Extend python "list" method with verbose
+    CountedIterator : An iterator that keeps track of the
+            number of items iterated
 
-    Args:
-        list (list): Input list
+    Attributes:
+        data (list): The list of items to iterate
+        counter (int): The count of items iterated
     """
 
     def __init__(self, data):
+        """
+        Initializes the CountedIterator with the given data.
+
+        Args:
+            data (list): The list of items to iterate over.
+        """
         self.counter = 0
-        self.item = iter(data)
+        self.data = data
 
     def get_count(self):
-        return (self.counter)
+        """
+        Returns the count of items iterated over.
 
-    def __next__(self):
-        for item in self.item:
-            continue
-        self.counter += 1
+        Returns:
+            int: The count of items iterated over.
+        """
         return self.counter
 
-data = [1, 2, 3, 4]
-counted_iter = CountedIterator(data)
+    def __next__(self):
+        """
+        __next__ Returns the next item in the data list
+                and increments the counter
 
-try:
-    while True:
-        item = next(counted_iter)
-        print(f"Got {item}, total {counted_iter.get_count()} items iterated.")
-except StopIteration:
-    print("No more items.")
+        Raises:
+            StopIteration: Check if no more items to iterate
+
+        Returns:
+            Any: The next item in the data list
+        """
+        try:
+            item = self.data[self.counter]
+        except IndexError:
+            raise StopIteration
+
+        self.counter += 1
+        return item
