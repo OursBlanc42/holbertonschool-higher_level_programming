@@ -7,15 +7,17 @@ Extending the Python List with Notifications
 
 class VerboseList(list):
     """
-    VerboseList Extend python "list" method with verbose
+    VerboseList Class inherit from the built in list class
 
     Args:
-        list (list): Input list
+        list (class): original list class
     """
-
     def append(self, item):
         """
-        append Improvement with verbose
+        append Improve append message with verbose
+
+        Args:
+            item (any): item to append
         """
         try:
             super().append(item)
@@ -25,8 +27,10 @@ class VerboseList(list):
 
     def extend(self, item):
         """
-        extend Improvement with verbose
-        display the number of element added
+        extend Improve extend message with verbose
+
+        Args:
+            item (any): item to extend
         """
         try:
             super().extend(item)
@@ -36,7 +40,10 @@ class VerboseList(list):
 
     def remove(self, item):
         """
-        remove Improvement with verbose
+        remove Remove extend message with verbose
+
+        Args:
+            item (any): item to remove
         """
         try:
             print(f"Removed [{item}] from the list.")
@@ -44,18 +51,17 @@ class VerboseList(list):
         except Exception:
             pass
 
-    def pop(self, index=None):
+    def pop(self, index=-1):
         """
-        pop Improvement with verbose
-            Show the index of the element popped
-            If no index specified, delete the last one
+        pop Pop extend message with verbose
+
+        Args:
+            index (int, optional): Number of the index to pop.
+            Defaults to None.
         """
-        if index is None:
-            index = -1
 
         try:
-            popped_item = self[index]
-            print(f"Popped [{popped_item}] from the list.")
-            super().pop(index)
+            print(f"Popped [{self[index]}] from the list.")
+            super().pop(self[index])
         except Exception:
             pass
