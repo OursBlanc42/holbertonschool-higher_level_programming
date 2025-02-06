@@ -19,11 +19,8 @@ class VerboseList(list):
         Args:
             item (any): item to append
         """
-        try:
-            super().append(item)
-            print(f"Added [{item}] to the list.")
-        except Exception:
-            pass
+        super().append(item)
+        print(f"Added [{item}] to the list.")
 
     def extend(self, item):
         """
@@ -32,11 +29,8 @@ class VerboseList(list):
         Args:
             item (any): item to extend
         """
-        try:
-            super().extend(item)
-            print(f"Extended the list with [{len(item)}] items.")
-        except Exception:
-            pass
+        super().extend(item)
+        print(f"Extended the list with [{len(item)}] items.")
 
     def remove(self, item):
         """
@@ -45,11 +39,8 @@ class VerboseList(list):
         Args:
             item (any): item to remove
         """
-        try:
-            print(f"Removed [{item}] from the list.")
-            super().remove(item)
-        except Exception:
-            pass
+        print(f"Removed [{item}] from the list.")
+        super().remove(item)
 
     def pop(self, index=-1):
         """
@@ -60,8 +51,5 @@ class VerboseList(list):
             Defaults to None.
         """
 
-        try:
-            print(f"Popped [{self[index]}] from the list.")
-            super().pop(self[index])
-        except Exception:
-            pass
+        print(f"Popped [{self[index]}] from the list.")
+        super().pop(self[index])
