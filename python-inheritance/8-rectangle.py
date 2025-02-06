@@ -41,20 +41,22 @@ class BaseGeometry():
 
 class Rectangle(BaseGeometry):
     """
-    Rectangle Class Rectangle that inherits BaseGeometry
+    Rectangle Class to create a rectangle based on BaseGeometry
 
     Args:
-        BaseGeometry (class): inherit class
+        BaseGeometry (class): inheritance
     """
     def __init__(self, width, height):
         """
-        __init__ initialize the instance
+        __init__ Build the instance of the rectangle
 
         Args:
-            width (int): width of the rectangle
-            height (int): height of th rectangle
+            width (any): width of the rectangle
+            height (any): height of the rectangle
         """
-        if self.integer_validator("width", width):
-            self.__width = width
-        if self.integer_validator("height", height):
-            self.__height = height
+        a = self.integer_validator("width", width)
+        b = self.integer_validator("height", height)
+        self.__width = width
+        self.__height = height
+        print(f"a width = {a}")
+        print(f"b height = {b}")
