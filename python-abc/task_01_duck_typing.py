@@ -46,7 +46,6 @@ class Circle(Shape):
         Args:
             radius (int): Radius of the circle
         """
-        self.integer_validator("radius", radius)
         self.radius = radius
 
     def area(self):
@@ -69,26 +68,6 @@ class Circle(Shape):
         result = 2 * math.pi * self.radius
         return (result)
 
-    def integer_validator(self, name, value):
-        """
-        integer_validator Validate the "value" variable
-
-        Args:
-            name (string): Name of the value (always a string)
-            value (int): Value
-
-        Raises:
-            TypeError: Must be an integer
-            ValueError: Must be >= 0
-        """
-
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
-        elif value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
-        else:
-            return True
-
 
 class Rectangle(Shape):
     """
@@ -108,8 +87,6 @@ class Rectangle(Shape):
             width (int): width
             height (int): height
         """
-        self.integer_validator("width", width)
-        self.integer_validator("height", height)
         self.width = width
         self.height = height
 
@@ -120,26 +97,6 @@ class Rectangle(Shape):
     def perimeter(self):
         """ Perimeter calculation = 2*W + 2*H """
         return (self.width * 2) + (self.height * 2)
-
-    def integer_validator(self, name, value):
-        """
-        integer_validator Validate the "value" variable
-
-        Args:
-            name (string): Name of the value (always a string)
-            value (int): Value
-
-        Raises:
-            TypeError: Must be an integer
-            ValueError: Must be >= 0
-        """
-
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
-        elif value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
-        else:
-            return True
 
 
 def shape_info(item):
