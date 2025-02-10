@@ -20,7 +20,7 @@ class VerboseList(list):
             item (any): item to append
         """
         super().append(item)
-        return print(f"Added [{item}] to the list.")
+        print(f"Added [{item}] to the list.")
 
     def extend(self, item):
         """
@@ -30,7 +30,7 @@ class VerboseList(list):
             item (any): item to extend
         """
         super().extend(item)
-        return print(f"Extended the list with [{len(item)}] items.")
+        print(f"Extended the list with [{len(item)}] items.")
 
     def remove(self, item):
         """
@@ -40,7 +40,7 @@ class VerboseList(list):
             item (any): item to remove
         """
         print(f"Removed [{item}] from the list.")
-        return super().remove(item)
+        super().remove(item)
 
     def pop(self, index=-1):
         """
@@ -52,4 +52,4 @@ class VerboseList(list):
         """
 
         print(f"Popped [{self[index]}] from the list.")
-        return super().pop(index)
+        super().pop(index)
