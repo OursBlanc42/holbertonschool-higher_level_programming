@@ -12,7 +12,7 @@ filename = "add_item.json"
 
 try:
     buffer = load_from_json_file(filename)
-except Exception:
+except FileNotFoundError:
     buffer = []
 
 for arg in sys.argv[1:]:
