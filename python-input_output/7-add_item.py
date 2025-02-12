@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 
 import sys
-import os
+
 
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 export_filename = "add_item.json"
 
-if os.path.isfile(export_filename) is True:
+try:
     buffer = load_from_json_file(export_filename)
-else:
+except FileNotFoundError:
     buffer = []
 
 for arg in sys.argv[1:]:
