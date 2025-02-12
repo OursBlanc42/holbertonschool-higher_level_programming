@@ -15,4 +15,4 @@ def convert_csv_to_json(filename=None):
             data.append(row)
 
     with open("data.json", "w", encoding="utf-8") as jsonfile:
-        jsonfile.write(json.dumps(data, indent=4))
+        jsonfile.write(json.dumps(data))
