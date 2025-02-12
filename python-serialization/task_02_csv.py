@@ -9,21 +9,23 @@ import csv
 import json
 
 
-def convert_csv_to_json(filename=None):
+def convert_csv_to_json(filename):
     """
     convert_csv_to_json
 
     Args:
         filename (_type_, optional): _description_. Defaults to None.
     """
+    try:
+        with open(filename, encoding='utf-8', newline='') as csvfile:
 
-    with open(filename, encoding='utf-8', newline='') as csvfile:
+            csv_reader = csv.DictReader(csvfile)
+            data = list(csv_reader)
 
-        csv_reader = csv.DictReader(csvfile)
+        with open("data.json", "w", encoding="utf-8") as jsonfile:
+            json.dump(data, jsonfile, indent=4)
 
-        data = []
-        for row in csv_reader:
-            data.append(row)
+        return True
 
-    with open("data.json", "w", encoding="utf-8") as jsonfile:
-        json.dump(data, jsonfile, indent=4)
+    except (FileNotFoundError):
+        return False
