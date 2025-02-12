@@ -62,6 +62,11 @@ class CustomObject:
         try:
             with open(filename, "rb") as myfile:
                 loaded_data = pickle.load(myfile)
-            return loaded_data
+
+            if isinstance(loaded_data, cls) is True:
+                return loaded_data
+            else:
+                return None
+
         except (FileNotFoundError, IOError, pickle.UnpicklingError):
             return None
