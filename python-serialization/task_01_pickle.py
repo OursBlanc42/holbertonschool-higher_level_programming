@@ -26,7 +26,7 @@ class CustomObject:
 
     def display(self):
         """
-        display
+        display the attributes
         """
         print(f"Name: {self.name}")
         print(f"Age: {self.age}")
@@ -45,7 +45,8 @@ class CustomObject:
         try:
             with open(filename, "wb") as myfile:
                 pickle.dump(self, myfile)
-        except (FileNotFoundError, IOError, pickle.PickleError):
+            return True
+        except (FileNotFoundError, IOError, pickle.PicklingError):
             return None
 
     @classmethod
@@ -62,11 +63,8 @@ class CustomObject:
         try:
             with open(filename, "rb") as myfile:
                 loaded_data = pickle.load(myfile)
-
-            if isinstance(loaded_data, cls) is True:
-                return loaded_data
-            else:
+                if isinstance(loaded_data, cls):
+                    return loaded_data
                 return None
-
-        except (FileNotFoundError, IOError, pickle.UnpicklingError):
+        except (FileNotFoundError, IOError, pickle.UnpicklingError, EOFError):
             return None
