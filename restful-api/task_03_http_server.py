@@ -31,13 +31,19 @@ class BasicHttpServer(http.server.BaseHTTPRequestHandler):
         Handle GET requests to the server. Respond with a simple message.
         """
 
-        if self.path == '/':
+        if self.path == "/":
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
 
-        elif self.path == '/data':
+        elif self.path == "/status":
+            self.send_response(200)
+            self.send_header("Content-type", "text/plain")
+            self.end_headers()
+            self.wfile.write(b"OK")
+
+        elif self.path == "/data":
             data_set = {"name": "John", "age": 30, "city": "New York"}
             self.send_response(200)
             self.send_header("Content-type", "application/json")
@@ -45,7 +51,7 @@ class BasicHttpServer(http.server.BaseHTTPRequestHandler):
             # Convert python dict into JSON and send it
             self.wfile.write(json.dumps(data_set).encode('utf-8'))
 
-        elif self.path == '/info':
+        elif self.path == "/info":
             data_set = {
                 "version": "1.0",
                 "description": "A simple API built with http.server"
@@ -58,7 +64,6 @@ class BasicHttpServer(http.server.BaseHTTPRequestHandler):
 
         else:
             self.send_response(404)
-            self.end_headers()
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Endpoint not found")
