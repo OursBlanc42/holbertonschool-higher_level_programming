@@ -78,20 +78,11 @@ def add_user():
     """
     retrieved_data = request.get_json()
 
-    # Check if the request contains dictionnary
-    if not isinstance(retrieved_data, dict):
-        return jsonify({"error": "Invalid data format"}), 400
-
     # Check if dictionnary contains a username key
     if not retrieved_data or "username" not in retrieved_data:
         return jsonify({"error": "Username is required"}), 400
 
     username = retrieved_data["username"]
-
-    # Check if username already exists
-    if username in users:
-        return jsonify({"error": "User already exists"}), 400
-
     users[username] = retrieved_data
 
     return jsonify({"message": "User added", "user": users[username]}), 201
