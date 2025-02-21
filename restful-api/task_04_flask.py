@@ -12,20 +12,7 @@ from flask import request
 app = Flask(__name__)
 
 # User dictionnary for tests :
-users = {
-    "jane": {
-        "username": "jane",
-        "name": "Jane",
-        "age": 28,
-        "city": "Los Angeles"
-    },
-    "john": {
-        "username": "john",
-        "name": "John",
-        "age": 30,
-        "city": "New York"
-    },
-}
+users = {}
 
 
 @app.route('/')
@@ -35,7 +22,7 @@ def home():
 
     Will return a simple message
     """
-    return jsonify({"message": "Welcome to the Flask API!"})
+    return "Welcome to the Flask API!"
 
 
 @app.route('/data', methods=['GET'])
@@ -65,7 +52,7 @@ def get_status():
     Returns:
         str : OK
     """
-    return jsonify({"status": "OK"})
+    return "OK"
 
 
 @app.route('/users/<username>', methods=['GET'])
@@ -98,6 +85,10 @@ def add_user():
     retrieved_data = request.get_json()
     if not retrieved_data or "username" not in retrieved_data:
         return jsonify({"error": "Username is required"}), 400
+
+    # Check if username already exist
+    if retrieved_data.get("username", "") in users:
+        return jsonify({"error": "User already exists"}), 400
 
     added_user = {
         "username": retrieved_data.get("username", ""),
