@@ -4,9 +4,7 @@
 Simple API using Python & Flask
 """
 
-from flask import Flask
-from flask import jsonify
-from flask import request
+from flask import Flask, jsonify, request
 
 # Create a Flask application
 app = Flask(__name__)
