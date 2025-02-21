@@ -35,7 +35,7 @@ def home():
 
     Will return a simple message
     """
-    return "Welcome to the Flask API!"
+    return jsonify({"message": "Welcome to the Flask API!"})
 
 
 @app.route('/data', methods=['GET'])
@@ -65,7 +65,7 @@ def get_status():
     Returns:
         str : OK
     """
-    return "OK"
+    return jsonify({"status": "OK"})
 
 
 @app.route('/users/<username>', methods=['GET'])
