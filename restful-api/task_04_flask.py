@@ -11,7 +11,7 @@ from flask import request
 # Create a Flask application
 app = Flask(__name__)
 
-# User dictionnary for tests :
+# User dictionary for tests :
 users = {}
 
 
@@ -36,11 +36,7 @@ def get_data():
        dict: A dictionary containing the usernames
     """
 
-    usernames = []
-    for user in users.values():
-        usernames.append(user["username"])
-
-    return jsonify(usernames)
+    return jsonify(list(users.keys()))
 
 
 @app.route("/status", methods=["GET"])
@@ -82,19 +78,26 @@ def add_user():
     Returns:
        user data successfully added
     """
-    retrieved_data = request.json()
+    retrieved_data = request.get_json()
+
+    # Check if the request contains dictionnary
+    if not isinstance(retrieved_data, dict):
+        return jsonify({"error": "Invalid data format"}), 400
+
+    # Check if dictionnary contains a username key
     if not retrieved_data or "username" not in retrieved_data:
         return jsonify({"error": "Username is required"}), 400
 
-    # Check if username already exist
-    if retrieved_data.get("username", "") in users:
+    username = retrieved_data["username"]
+
+    # Check if username already exists
+    if username in users:
         return jsonify({"error": "User already exists"}), 400
 
-    username = retrieved_data["username"]
     users[username] = retrieved_data
 
     return jsonify({"message": "User added", "user": users[username]}), 201
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
