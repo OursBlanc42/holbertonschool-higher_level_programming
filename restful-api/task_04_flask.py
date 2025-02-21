@@ -23,7 +23,7 @@ def home():
     return "Welcome to the Flask API!"
 
 
-@app.route("/data", methods=["GET"])
+@app.route("/data")
 def get_data():
     """
     get_data
@@ -37,7 +37,7 @@ def get_data():
     return jsonify(list(users.keys()))
 
 
-@app.route("/status", methods=["GET"])
+@app.route("/status")
 def get_status():
     """
     get_status
@@ -49,7 +49,7 @@ def get_status():
     return "OK"
 
 
-@app.route("/users/<username>", methods=["GET"])
+@app.route("/users/<username>")
 def get_user(username):
     """
     get_user
@@ -98,4 +98,4 @@ def add_user():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
