@@ -65,7 +65,7 @@ def get_status():
     Returns:
         str : OK
     """
-    return jsonify({"status": "OK"})
+    return "OK"
 
 
 @app.route('/users/<username>', methods=['GET'])
