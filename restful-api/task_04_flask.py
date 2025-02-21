@@ -15,7 +15,7 @@ app = Flask(__name__)
 users = {}
 
 
-@app.route('/')
+@app.route("/")
 def home():
     """
     Home Default root URL
@@ -25,7 +25,7 @@ def home():
     return "Welcome to the Flask API!"
 
 
-@app.route('/data', methods=['GET'])
+@app.route("/data", methods=["GET"])
 def get_data():
     """
     get_data
@@ -43,7 +43,7 @@ def get_data():
     return jsonify(usernames)
 
 
-@app.route('/status', methods=['GET'])
+@app.route("/status", methods=["GET"])
 def get_status():
     """
     get_status
@@ -55,7 +55,7 @@ def get_status():
     return "OK"
 
 
-@app.route('/users/<username>', methods=['GET'])
+@app.route("/users/<username>", methods=["GET"])
 def get_user(username):
     """
     get_user
@@ -69,10 +69,10 @@ def get_user(username):
     if username in users:
         return jsonify(users[username])
     else:
-        return jsonify({'error': 'User not found'}), 404
+        return jsonify({"error": "User not found"}), 404
 
 
-@app.route('/add_user', methods=['POST'])
+@app.route("/add_user", methods=["POST"])
 def add_user():
     """
     add_user
@@ -82,7 +82,7 @@ def add_user():
     Returns:
        user data successfully added
     """
-    retrieved_data = request.get_json()
+    retrieved_data = request.json()
     if not retrieved_data or "username" not in retrieved_data:
         return jsonify({"error": "Username is required"}), 400
 
