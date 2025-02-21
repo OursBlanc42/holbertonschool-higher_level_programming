@@ -90,15 +90,10 @@ def add_user():
     if retrieved_data.get("username", "") in users:
         return jsonify({"error": "User already exists"}), 400
 
-    added_user = {
-        "username": retrieved_data.get("username", ""),
-        "name": retrieved_data.get("name", ""),
-        "age": retrieved_data.get("age", 0),
-        "city": retrieved_data.get("city", "")
-    }
-    users[retrieved_data.get("username", "")] = added_user
+    username = retrieved_data["username"]
+    users[username] = retrieved_data
 
-    return jsonify({"message": "User added", "user": added_user}), 201
+    return jsonify({"message": "User added", "user": users[username]}), 201
 
 
 if __name__ == "__main__":
