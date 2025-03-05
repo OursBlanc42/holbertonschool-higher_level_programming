@@ -33,7 +33,9 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Print results in comma delimited format
-    cursor.execute("SELECT * FROM states WHERE name = %s", (state_name,))
+    cursor.execute(
+        "SELECT * FROM states WHERE BINARY name = %s", (state_name,))
+
     rows = cursor.fetchall()
     for row in rows:
         print(row)
