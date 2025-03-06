@@ -33,9 +33,6 @@ if __name__ == "__main__":
         State.name.like('%a%')).all()
 
     # Print the states
-    if states:
-        for state in states:
-            print(f"{state.id}: {state.name}")
-    else:
-        print("Nothing")
+    for state in states:
+        print(f"{state.id}: {state.name}")
     session.close()
