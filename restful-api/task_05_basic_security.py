@@ -52,7 +52,7 @@ def get_status():
 # Custom error handler for 401 Unauthorized
 @auth.error_handler
 def unauthorized():
-    return (jsonify({'error': 'Unauthorized access'}), 401)
+    return (jsonify({'error': 'Unauthorized'}), 401)
 
 
 # Admin only route
