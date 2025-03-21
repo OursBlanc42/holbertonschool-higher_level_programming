@@ -23,10 +23,17 @@ def contact():
 
 @app.route('/items')
 def items():
-    with open('items.json', 'r') as file:
-        data = json.load(file)
+    try:
+        with open('items.json', 'r') as file:
+            data = json.load(file)
 
-    return render_template('items.html', items=data['items'])
+        return render_template('items.html', items=data['items'])
+
+    except FileNotFoundError:
+        return "Items file not found", 404
+
+    except json.JSONDecodeError:
+        return "Error decoding JSON", 500
 
 
 if __name__ == '__main__':
