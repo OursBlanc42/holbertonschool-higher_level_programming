@@ -26,8 +26,9 @@ def items():
     try:
         with open('items.json', 'r') as file:
             data = json.load(file)
+            items = data.get('items', [])
 
-        return render_template('items.html', items=data['items'])
+        return render_template('items.html', items=items)
 
     except FileNotFoundError:
         return "Items file not found", 404
@@ -35,8 +36,7 @@ def items():
     except json.JSONDecodeError:
         return "Error decoding JSON", 500
 
-    except KeyError:
-        return "Missing 'items' key in JSON", 500
+
 
 
 if __name__ == '__main__':
