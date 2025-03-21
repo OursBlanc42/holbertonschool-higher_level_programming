@@ -22,23 +22,32 @@ def generate_invitations(template, attendees):
         if not isinstance(template, str):
             raise ValueError("[ERROR] - Template should be a string.")
 
+        if not template.strip():
+            raise ValueError(
+                "[ERROR] - Template string should not be empty or just spaces."
+            )
+
         if not isinstance(attendees, list):
             raise ValueError("[ERROR] - Template should be a string.")
 
-        for item in list:
+        if not attendees:
+            raise ValueError("[ERROR] - Attendees list should not be empty.")
+
+        for item in attendees:
             if not isinstance(item, dict):
                 raise ValueError(
                     "[ERROR] - Attendees should be a list of dictionaries."
                     )
 
-        if not template.strip():
-            raise ValueError("[ERROR] - Template should not be empty.")
+        template_content = template
 
-        if not attendees:
-            raise ValueError("[ERROR] - Template should not be empty.")
+        if not template_content.strip():
+            print("Template is empty, no output files generated.")
+            return
 
     except ValueError as err:
         print(err)
+        return
 
     # Check for missing keys in the attendees list and update them with "N/A"
     for item in attendees:
