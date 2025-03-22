@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-from flask import Flask, render_template
-from flask import json
-from flask import request
+from flask import Flask, render_template, request
+import json
 import csv
+import os
 
 app = Flask(__name__)
 
@@ -49,18 +49,32 @@ def products():
 
     if source == "json":
 
-        with open("products.json", 'r') as file:
-            reader = json.load(file)
-            data = reader
+        try:
+            with open("products.json", 'r') as file:
+                reader = json.load(file)
+                data = reader
+
+        except FileNotFoundError:
+            return render_template("product_display.html", error="File not found")
+
+        except json.JSONDecodeError:
+            return render_template("product_display.html", error="Error decoding JSON")
 
     elif source == "csv":
 
-        with open("products.csv", newline="") as file:
-            reader = csv.DictReader(file)
-            data = list(reader)
+        try:
+            with open("products.csv", newline="") as file:
+                reader = csv.DictReader(file)
+                data = list(reader)
+
+        except FileNotFoundError:
+            return render_template("product_display.html", error="File not found")
+
+        except json.JSONDecodeError:
+            return "Error decoding JSON", 500
 
     else:
-        return "Wrong source", 400
+        return render_template("product_display.html", error="Wrong source")
 
     # Append a dictionnary with only one element to fit with HTML prerequisites
     if product_id:
@@ -74,7 +88,7 @@ def products():
         if item_found is True:
             return render_template("product_display.html", products=filtered)
         else:
-            return "Product not found", 404
+            return render_template("product_display.html", error="Product not found")
 
     return render_template("product_display.html", products=data)
 
