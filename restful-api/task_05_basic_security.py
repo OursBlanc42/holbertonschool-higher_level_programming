@@ -46,13 +46,7 @@ def get_status():
     """
     get_status
     """
-    return "Basic Auth: Access Granted"
-
-
-# Custom error handler for 401 Unauthorized
-@auth.error_handler
-def unauthorized():
-    return (jsonify({'error': 'Unauthorized'}), 401)
+    return jsonify({"msg": "Basic Auth: Access Granted"})
 
 
 # Admin only route
@@ -61,7 +55,7 @@ def unauthorized():
 def admin_only():
     current_user = get_jwt()
     if current_user.get("role") != "admin":
-        return jsonify({"msg": "Admin access required"}), 403
+        return jsonify({"error": "Admin access required"}), 403
     return jsonify({"msg": "Admin Access: Granted"}), 200
 
 
@@ -76,15 +70,16 @@ def login():
     password = retrieved_data.get("password")
 
     # Check credential and return a valid JWT token
-    if username in users:
-        if check_password_hash(users[username]["password"], password):
-            access_token = create_access_token(
-                identity=username,
-                additional_claims={"role": users[username]["role"]}
-                )
-            return jsonify(access_token=access_token), 200
-    else:
-        return jsonify({"msg": "Bad username or password"}), 401
+    if username in users and check_password_hash(
+            users[username]["password"], password):
+        access_token = create_access_token(
+            identity=username,
+            additional_claims={"role": users[username]["role"]}
+        )
+        return jsonify(access_token=access_token), 200
+
+    # otherwise always return 401
+    return jsonify({"msg": "Bad username or password"}), 401
 
 
 # JWT protected route
